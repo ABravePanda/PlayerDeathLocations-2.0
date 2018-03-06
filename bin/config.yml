@@ -1,0 +1,69 @@
+#----------DeathLocation 2.0------------
+# A Minecraft/Spigot Plugin for 1.12.2
+# This Plugin Is Made For MumboCraft & It's Players & Staff. 
+# Any misuse, unauthorised selling or re-distribution of this plugin will call for said plugin to be removed
+# Plugin written by A_Brave_Panda & Jamdoggy
+
+Hostname: 'localhost'
+Port: '3306'
+Database: 'mcserverdata'
+Username: 'root'
+Password: ''
+MainTable: 'deathlocations'
+InventoryTable: 'invs'
+
+# -----------------------------------------------------------
+# Messages
+#
+# When a console cannot do a command.
+ConsoleCommandError: '&cError, you must be a player to do this command.'
+#
+# For when a player doesnt have permission to do a command.
+NoPermission: '&cYou dont have permission to do that command!'
+#
+# For when a player enters a incorrect argument
+CommandNotFound: '&cIncorrect arguments...'
+#
+# Message sent to player whos inventory was replaced
+PlayerReplaceInv: '&aYour inventory has been replaced by %player%'
+#
+# Message sent to player who replaced an inventory
+InventoryReplaced: '&aYou have replaced %targets%s inventory!'
+#
+# Message sent when a player doesnt specify a player
+NoPlayerSpecified: '&cPlease specify a player!'
+#
+# Message when you cant find the player
+PlayerNotFound: '&cWe cant find that player!'
+#
+# For convenience, MySQL Command to create the database table
+# -----------------------------------------------------------
+# CREATE TABLE `deathlocations` (
+#  `id` int(11) NOT NULL,
+#  `PlayerName` varchar(24) NOT NULL,
+#  `X` varchar(24) NOT NULL,
+#  `Y` varchar(24) NOT NULL,
+#  `Z` varchar(24) NOT NULL,
+#  `DeathReason` varchar(255) NOT NULL,
+#  `world` varchar(255) NOT NULL,
+#  `Time` datetime DEFAULT NULL
+# ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+# 
+# ALTER TABLE `deathlocations`
+#  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+#
+# ALTER TABLE `deathlocations`
+#  ADD PRIMARY KEY (`id`);
+#
+#
+#
+# --------------------For Inventories-----------------------
+#
+# CREATE TABLE `invs` (
+# `id` int(11) NOT NULL AUTO_INCREMENT,
+#  `name` varchar(222) NOT NULL,
+#  `itemstack` blob NOT NULL,
+#  PRIMARY KEY (`id`)
+#) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+#
+#----------End-Of-Config-----------

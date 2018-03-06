@@ -1,0 +1,11 @@
+name: PlayerDeathLocations-2.0
+version: 2.0
+main: me.abravepanda.pdl.Main
+description: Player Death Locations
+author: A_Brave_Panda, Jamdoggy
+commands:
+    death:
+        aliases: [de]
+        description: Find a players death!
+        usage: 
+          /<command>
