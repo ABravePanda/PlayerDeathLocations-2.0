@@ -40,7 +40,7 @@ PlayerNotFound: '&cWe cant find that player!'
 # -----------------------------------------------------------
 # CREATE TABLE `deathlocations` (
 #  `id` int(11) NOT NULL,
-#  `PlayerName` varchar(24) NOT NULL,
+#  `PlayerUUID` varchar(36) NOT NULL,
 #  `X` varchar(24) NOT NULL,
 #  `Y` varchar(24) NOT NULL,
 #  `Z` varchar(24) NOT NULL,
@@ -50,7 +50,7 @@ PlayerNotFound: '&cWe cant find that player!'
 # ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 # 
 # ALTER TABLE `deathlocations`
-#  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+#  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 #
 # ALTER TABLE `deathlocations`
 #  ADD PRIMARY KEY (`id`);
@@ -61,7 +61,7 @@ PlayerNotFound: '&cWe cant find that player!'
 #
 # CREATE TABLE `invs` (
 # `id` int(11) NOT NULL AUTO_INCREMENT,
-#  `name` varchar(222) NOT NULL,
+#  `uuid` varchar(222) NOT NULL,
 #  `itemstack` blob NOT NULL,
 #  PRIMARY KEY (`id`)
 #) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;

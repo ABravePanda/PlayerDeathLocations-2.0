@@ -7,6 +7,7 @@ import java.sql.Statement;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
@@ -28,8 +29,13 @@ public class RestoreCommand {
 				if(args.length > 1) {
 					
 					try {
+						OfflinePlayer ofp = Bukkit.getOfflinePlayer(args[1]);
 						Statement statement = Main.c.createStatement();
-						ResultSet res = statement.executeQuery("SELECT * FROM " + DbCon.inventoryTable + " WHERE name = '" + args[1] + "';");
+						ResultSet res = statement.executeQuery("SELECT * FROM " + DbCon.inventoryTable + " WHERE uuid = '" + ofp.getUniqueId() + "';");
+						if(res == null)
+						{
+							p.sendMessage(ChatColor.RED + "Error");
+						}
 						if(res.next()) {
 							String serializedItemstack = res.getString("itemstack");
 							ItemStack[] deserializedItemstack = InventoryStringDeSerializer.itemStackArrayFromBase64(serializedItemstack);

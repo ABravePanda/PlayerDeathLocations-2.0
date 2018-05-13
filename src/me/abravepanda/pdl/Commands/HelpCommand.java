@@ -26,7 +26,7 @@ public class HelpCommand {
 			if(p.hasPermission("death.restore")) {	
 				p.sendMessage(ChatColor.YELLOW + "/death restore <player>" + ChatColor.GOLD + " Restores players last inventory" + ChatColor.RED + " (death.restore)");
 			}
-			if(p.hasPermission("death.inventory")) {	
+			if(p.hasPermission("death.inventory") || p.hasPermission("death.inventory.update")) {	
 				p.sendMessage(ChatColor.YELLOW + "/death inventory <player>" + ChatColor.GOLD + " Displays players last inventory" + ChatColor.RED + " (death.inventory)");
 			}
 			

@@ -36,8 +36,8 @@ public class DeathEvent implements Listener {
 
 			String time = sdf.format(dt);
       
-			String statementstring = "SELECT * FROM " + DbCon.maintable + " WHERE PlayerName = '" + p.getName() +"';";
-			String statementstring2 = "INSERT INTO "+ DbCon.maintable + " (id, PlayerName, X, Y, Z, DeathReason, world,Time) VALUES (NULL, '" + p.getName() + "', '" + x + "', '" + y + "', '" + z + "', '" + dr + "', '" + world + "', '" + time + "');";
+			String statementstring = "SELECT * FROM " + DbCon.maintable + " WHERE PlayerUUID = '" + p.getUniqueId() +"';";
+			String statementstring2 = "INSERT INTO "+ DbCon.maintable + " (id, PlayerUUID, X, Y, Z, DeathReason, world,Time) VALUES (NULL, '" + p.getUniqueId() + "', '" + x + "', '" + y + "', '" + z + "', '" + dr + "', '" + world + "', '" + time + "');";
 		
 			try {
 
@@ -59,15 +59,15 @@ public class DeathEvent implements Listener {
 		//When the player dies, save the inventory
 			try {
 				Statement statement = Main.c.createStatement();
-				String statementstring333 = "SELECT * FROM invs WHERE name = '" + p.getName() +"';";
+				String statementstring333 = "SELECT * FROM invs WHERE uuid = '" + p.getUniqueId() +"';";
 				ResultSet res = statement.executeQuery(statementstring333);
 				ItemStack[] items = e.getEntity().getInventory().getContents();
 				String n = InventoryStringDeSerializer.itemStackArrayToBase64(items);
 				if(res.next()) {  // Player already has an inv
-					String statementstring3 = "UPDATE invs SET name='" + p.getName() + "', itemstack = '" + n + "' WHERE id='" + res.getInt("id") + "';";
+					String statementstring3 = "UPDATE invs SET uuid='" + p.getUniqueId() + "', itemstack = '" + n + "' WHERE id='" + res.getInt("id") + "';";
 					statement.executeUpdate(statementstring3);
 				} else {         // First time player has died, create a new death entry
-					String statementstring22 = "INSERT INTO `invs`(`id`, `name`, `itemstack`) VALUES (NULL, '" + e.getEntity().getName() + "','" + n + "')";
+					String statementstring22 = "INSERT INTO `invs`(`id`, `uuid`, `itemstack`) VALUES (NULL, '" + e.getEntity().getUniqueId() + "','" + n + "')";
 					statement.executeUpdate(statementstring22);
 				}
 			} catch (SQLException e2) {

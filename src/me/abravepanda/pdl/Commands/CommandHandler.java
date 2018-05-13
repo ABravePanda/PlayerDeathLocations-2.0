@@ -19,10 +19,16 @@ public class CommandHandler implements CommandExecutor {
 						break;
 					case "restore": RestoreCommand.RestoreCmd(sender, args);
 						break;
-					default: sender.sendMessage(Messages.cmdNotFound);
+					case "other": OtherCommand.otherCmd(sender, args);
+						break;
+					case "inventory": InventoryCommand.InventoryCommand(sender, args);
+						break;
+					case "tp": TeleportCommand.TeleportCommand(sender, args);
+					break;
+					default: DeathCommand.DeathCommand(sender, args);
 				}		
 			} else {
-				HelpCommand.HelpCmd(sender, args);
+				 DeathCommand.DeathCommand(sender, args);
 			}
 		}
 		return true;
